@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang='en' style='background-color: chartreuse; font-family: Arial, Helvetica, sans-serif;''>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Matchmaker</title>
+    </head>
+
+    <body>
+        <h1>Are You Compatible With Justin?</h1>
+        <p>You will be givnen a series of statements. Use the dropdown to select on the spectrum whether you agree or disagree.</p>
+
+        <label>Star Wars is the greatest science fiction series to currently exist.</label><br />
+        <select id='q1'>
+            <option value='5'>Strongly Agree</option>
+            <option value='4'>Agree</option>
+            <option value='3'>Neutral</option>
+            <option value='2'>Disagree</option>
+            <option value='1'>Strongly Disagree</option>
+        </select><br />
+
+        <br />
+        <label>Dungeons and Dragons is very boring.</label><br />
+        <select id='q2'>
+            <option value='5'>Strongly Agree</option>
+            <option value='4'>Agree</option>
+            <option value='3'>Neutral</option>
+            <option value='2'>Disagree</option>
+            <option value='1'>Strongly Disagree</option>
+        </select><br />
+
+        <br />
+        <label>Batman is a mediocre superhero in the DC universe.</label><br />
+        <select id='q3'>
+            <option value='5'>Strongly Agree</option>
+            <option value='4'>Agree</option>
+            <option value='3'>Neutral</option>
+            <option value='2'>Disagree</option>
+            <option value='1'>Strongly Disagree</option>
+        </select><br />
+        
+        <br />
+        <label>Country is the worst genre of music.</label><br />
+        <select id='q4'>
+            <option value='5'>Strongly Agree</option>
+            <option value='4'>Agree</option>
+            <option value='3'>Neutral</option>
+            <option value='2'>Disagree</option>
+            <option value='1'>Strongly Disagree</option>
+        </select><br />
+
+
+        <br />
+        <label>Honesty is not an important aspect of any form of relationship.</label><br />
+        <select id='q5'>
+            <option value='5'>Strongly Agree</option>
+            <option value='4'>Agree</option>
+            <option value='3'>Neutral</option>
+            <option value='2'>Disagree</option>
+            <option value='1'>Strongly Disagree</option>
+        </select><br />
+
+
+        <br /><br />
+        <button onclick='compatibility()''>Submit Responses</button>
+        <p id='compatibility'></p>
+
+        <script>
+            console.log('Booting up system...')
+
+            function compatibility() {
+                console.log('comaptibility()')
+                
+                const DRES = [
+                    5,
+                    1,
+                    2,
+                    4,
+                    1
+                ]
+
+                const MAX = 25
+
+                let q1res = document.getElementById('q1').selectedOptions[0].value
+                let q2res = document.getElementById('q2').selectedOptions[0].value
+                let q3res = document.getElementById('q3').selectedOptions[0].value
+                let q4res = document.getElementById('q4').selectedOptions[0].value
+                let q5res = document.getElementById('q5').selectedOptions[0].value
+
+                console.log('Question 1 Answers')
+                console.log(q1res)
+
+                console.log('Question 2 Answers')
+                console.log(q2res)
+
+                console.log('Question 3 Answers')
+                console.log(q3res)
+
+                console.log('Question 4 Answers')
+                console.log(q4res)
+
+                console.log('Question 5 Answers')
+                console.log(q5res)
+
+                let q1com = 5 - Math.abs(q1res - DRES[0])
+                let q2com = 5 - Math.abs(q2res - DRES[1])
+                let q3com = 5 - Math.abs(q3res - DRES[2])
+                let q4com = 5 - Math.abs(q4res - DRES[3])
+                let q5com = 5 - Math.abs(q5res - DRES[4])
+
+                console.log(q1com)
+                console.log(q2com)
+                console.log(q3com)
+                console.log(q4com)
+                console.log(q5com)
+
+                let totcom = q1com + q2com + q3com + q4com + q5com
+
+                totcom *= 100/MAX
+                totcom = Math.round(totcom)
+                console.log('totcom ' + totcom)
+
+                document.getElementById('compatibility').innerHTML = 'Overall Compatability: ' + totcom
+                
+            }
+        </script>
+    </body>
+</html>
